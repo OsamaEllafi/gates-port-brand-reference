@@ -449,6 +449,60 @@ h3 {
   text-transform: uppercase;
 }
 
+.logo-actions,
+.emblem-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+}
+
+.copy-logo-button {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0.9rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid rgba(45, 36, 33, 0.42);
+  border-radius: 0;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+
+.copy-logo-button.light {
+  color: var(--cream);
+  border-color: rgba(240, 229, 210, 0.48);
+}
+
+.copy-logo-button:hover {
+  color: var(--cream);
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+}
+
+.copy-logo-button.light:hover {
+  color: var(--burgundy);
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
+.copy-logo-button svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
 .download-button.light {
   border-bottom-color: rgba(240, 229, 210, 0.48);
 }
@@ -484,7 +538,11 @@ h3 {
 }
 
 .emblem-copy .text-link {
-  align-self: flex-start;
+  align-self: center;
+}
+
+.emblem-actions {
+  align-items: center;
   margin-top: 1rem;
 }
 
