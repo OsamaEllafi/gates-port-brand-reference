@@ -4,6 +4,17 @@
 
 Always write the company name as **GatesPort Aviation**, with Gates and Port joined as one word, matching the logo wordmark.
 
+## Brands
+
+GatesPort Aviation is the holding company. It has three subsidiaries, each with its own logo set in the same five colours:
+
+- GatesPort Aviation — `gates-port-logo-*`
+- GatesPort Cargo — `gates-port-cargo-logo-*`
+- GatesPort Catering — `gates-port-catering-logo-*`
+- GatesPort VIP — `gates-port-vip-logo-*`
+
+All four share the GP emblem and the GATESPORT wordmark. Only the descriptor line changes (AVIATION, CARGO, CATERING, VIP).
+
 ## Colours
 
 - Burgundy — `#48151D` — primary brand surfaces and actions

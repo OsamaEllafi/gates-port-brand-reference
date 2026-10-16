@@ -408,6 +408,11 @@ h3 {
   padding: clamp(3rem, 7vw, 7rem);
 }
 
+.subsidiary-section {
+  padding-top: clamp(4rem, 7vw, 6rem);
+  border-top: 1px solid var(--line);
+}
+
 .primary-logo-card .logo-stage img {
   width: min(38rem, 80%);
   height: auto;

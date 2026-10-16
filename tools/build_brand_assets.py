@@ -23,6 +23,15 @@ COLOURS = {
     "black": "#111111",
 }
 
+# Holding company first, then its subsidiaries. Each brand shares the GP emblem
+# and the GATESPORT wordmark; only the descriptor line changes.
+BRANDS = {
+    "aviation": ("AVIATION", "GatesPort Aviation"),
+    "cargo": ("CARGO", "GatesPort Cargo"),
+    "catering": ("CATERING", "GatesPort Catering"),
+    "vip": ("VIP", "GatesPort VIP"),
+}
+
 
 def tracked_text(draw: ImageDraw.ImageDraw, xy: tuple[int, int], text: str, font: ImageFont.FreeTypeFont, fill: str, tracking: int) -> int:
     x, y = xy
@@ -64,7 +73,7 @@ def build_emblem_svg(mask: Image.Image, colour: str, destination: Path) -> None:
     destination.write_text(svg, encoding="utf-8")
 
 
-def build_lockup(mask: Image.Image, colour: str) -> Image.Image:
+def build_lockup(mask: Image.Image, colour: str, descriptor: str = "AVIATION") -> Image.Image:
     canvas = Image.new("RGBA", (3000, 650), (0, 0, 0, 0))
     emblem = Image.new("RGBA", mask.size, colour)
     emblem.putalpha(mask)
@@ -76,18 +85,18 @@ def build_lockup(mask: Image.Image, colour: str) -> Image.Image:
     descriptor_font = ImageFont.truetype(FONT_FILE, 86)
     descriptor_font.set_variation_by_name("Medium")
     tracked_text(draw, (1660, 82), "GATESPORT", main_font, colour, 4)
-    tracked_text(draw, (1666, 345), "AVIATION", descriptor_font, colour, 42)
+    tracked_text(draw, (1666, 345), descriptor, descriptor_font, colour, 42)
     return canvas
 
 
-def build_lockup_svg(mask: Image.Image, colour: str, destination: Path) -> None:
-    png = build_lockup(mask, colour)
+def build_lockup_svg(mask: Image.Image, colour: str, destination: Path, descriptor: str = "AVIATION", label: str = "GatesPort Aviation") -> None:
+    png = build_lockup(mask, colour, descriptor)
     buffer = __import__("io").BytesIO()
     png.save(buffer, format="PNG", optimize=True)
     encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
     svg = (
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 650" role="img" '
-        'aria-label="GatesPort Aviation">'
+        f'aria-label="{label}">'
         f'<image width="3000" height="650" href="data:image/png;base64,{encoded}"/>'
         "</svg>"
     )
@@ -102,9 +111,11 @@ def main() -> None:
         emblem.putalpha(mask)
         emblem.save(OUTPUT / f"gates-port-emblem-{name}.png", optimize=True)
         build_emblem_svg(mask, colour, OUTPUT / f"gates-port-emblem-{name}.svg")
-        lockup = build_lockup(mask, colour)
-        lockup.save(OUTPUT / f"gates-port-logo-{name}.png", optimize=True)
-        build_lockup_svg(mask, colour, OUTPUT / f"gates-port-logo-{name}.svg")
+        for brand, (descriptor, label) in BRANDS.items():
+            # Aviation keeps its original file names; subsidiaries add the brand slug.
+            stem = f"gates-port-logo-{name}" if brand == "aviation" else f"gates-port-{brand}-logo-{name}"
+            build_lockup(mask, colour, descriptor).save(OUTPUT / f"{stem}.png", optimize=True)
+            build_lockup_svg(mask, colour, OUTPUT / f"{stem}.svg", descriptor, label)
 
     # Primary aliases intentionally use the flat antique-gold production artwork.
     (OUTPUT / "gates-port-logo-primary.png").write_bytes((OUTPUT / "gates-port-logo-gold.png").read_bytes())
