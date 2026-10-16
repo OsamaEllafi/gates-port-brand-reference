@@ -1,3 +1,6 @@
 .DS_Store
 Thumbs.db
 
+
+# Impeccable working files (decision pages, review captures)
+.impeccable/
