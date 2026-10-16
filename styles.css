@@ -410,6 +410,7 @@ h3 {
 
 .primary-logo-card .logo-stage img {
   width: min(38rem, 80%);
+  height: auto;
 }
 
 .variant-grid {
@@ -925,6 +926,7 @@ footer {
 
 footer img {
   width: 10rem;
+  height: auto;
 }
 
 footer p {

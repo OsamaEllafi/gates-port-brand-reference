@@ -1,8 +1,8 @@
-# Gates Port Aviation — Brand Quick Reference
+# GatesPort Aviation — Brand Quick Reference
 
 ## Name
 
-Always write the company name as **Gates Port Aviation**, with a clear space between Gates and Port.
+Always write the company name as **GatesPort Aviation**, with Gates and Port joined as one word, matching the logo wordmark.
 
 ## Colours
 

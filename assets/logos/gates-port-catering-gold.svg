@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 650" role="img" aria-labelledby="title desc">
+  <title id="title">GatesPort Catering</title>
+  <desc id="desc">Gold GatesPort Catering logo</desc>
+  <!-- The emblem remains the approved Gates Port gold artwork. -->
+  <image href="gates-port-emblem-gold.png" x="0" y="0" width="1500" height="650" preserveAspectRatio="xMinYMid meet"/>
+  <g fill="#ba9961">
+    <text x="1640" y="214" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="136" font-weight="800" letter-spacing="3">GATESPORT</text>
+    <text x="1660" y="405" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="84" font-weight="400" letter-spacing="34">CATERING</text>
+  </g>
+</svg>

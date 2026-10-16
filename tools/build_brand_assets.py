@@ -75,7 +75,7 @@ def build_lockup(mask: Image.Image, colour: str) -> Image.Image:
     main_font.set_variation_by_name("Bold")
     descriptor_font = ImageFont.truetype(FONT_FILE, 86)
     descriptor_font.set_variation_by_name("Medium")
-    tracked_text(draw, (1660, 82), "GATES PORT", main_font, colour, 4)
+    tracked_text(draw, (1660, 82), "GATESPORT", main_font, colour, 4)
     tracked_text(draw, (1666, 345), "AVIATION", descriptor_font, colour, 42)
     return canvas
 
@@ -87,7 +87,7 @@ def build_lockup_svg(mask: Image.Image, colour: str, destination: Path) -> None:
     encoded = base64.b64encode(buffer.getvalue()).decode("ascii")
     svg = (
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 650" role="img" '
-        'aria-label="Gates Port Aviation">'
+        'aria-label="GatesPort Aviation">'
         f'<image width="3000" height="650" href="data:image/png;base64,{encoded}"/>'
         "</svg>"
     )
